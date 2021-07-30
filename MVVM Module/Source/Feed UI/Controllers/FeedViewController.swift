@@ -13,6 +13,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 
+	@IBOutlet var errorView: ErrorView!
+
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -26,11 +28,20 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
+			guard let self = self else { return }
 			if isLoading {
-				self?.refreshControl?.beginRefreshing()
+				if !self.errorView.isHidden {
+					self.errorView?.hideMessage()
+				}
+				self.refreshControl?.beginRefreshing()
 			} else {
-				self?.refreshControl?.endRefreshing()
+				self.refreshControl?.endRefreshing()
 			}
+		}
+
+		viewModel?.onFeedLoadError = { [weak self] _ in
+			guard let self = self else { return }
+			self.errorView.show(message: Localized.Feed.loadError)
 		}
 	}
 
