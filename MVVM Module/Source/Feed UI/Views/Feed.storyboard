@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Cf6-R8-XPe" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Cf6-R8-XPe" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -168,7 +168,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="Cf6-R8-XPe" id="9tG-ny-xCx"/>
+                        <outlet property="errorView" destination="Cf6-R8-XPe" id="cJL-mn-Wxg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
