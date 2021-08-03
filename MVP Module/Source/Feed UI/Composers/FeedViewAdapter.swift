@@ -27,7 +27,7 @@ final class FeedViewAdapter: FeedView {
 		})
 	}
 
-	func displayError(_ error: Error) {
+	func displayError(_ error: String) {
 		controller?.displayError(error)
 	}
 }

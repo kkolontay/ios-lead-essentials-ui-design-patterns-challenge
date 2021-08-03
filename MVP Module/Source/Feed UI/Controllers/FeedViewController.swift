@@ -40,8 +40,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		tableModel = cellControllers
 	}
 
-	func displayError(_ error: Error) {
-		self.errorView.show(message: Localized.Feed.loadError)
+	func displayError(_ error: String) {
+		self.errorView.show(message: error)
 	}
 
 	public override func viewDidLayoutSubviews() {
