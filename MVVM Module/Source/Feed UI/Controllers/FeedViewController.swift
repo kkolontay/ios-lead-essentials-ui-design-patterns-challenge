@@ -39,9 +39,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 
-		viewModel?.onFeedLoadError = { [weak self] _ in
+		viewModel?.onFeedLoadError = { [weak self] error in
 			guard let self = self else { return }
-			self.errorView.show(message: Localized.Feed.loadError)
+			self.errorView.show(message: error)
 		}
 	}
 
