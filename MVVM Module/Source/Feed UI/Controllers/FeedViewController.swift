@@ -13,7 +13,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 
-	@IBOutlet var errorView: ErrorView!
+	@IBOutlet private(set) var errorView: ErrorView!
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,6 +22,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 
 	@IBAction private func refresh() {
+		errorView.hideMessage()
 		viewModel?.loadFeed()
 	}
 
@@ -29,14 +30,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			guard let self = self else { return }
-			if isLoading {
-				if !self.errorView.isHidden {
-					self.errorView?.hideMessage()
-				}
-				self.refreshControl?.beginRefreshing()
-			} else {
-				self.refreshControl?.endRefreshing()
-			}
+			isLoading ? self.refreshControl?.beginRefreshing() : self.refreshControl?.endRefreshing()
 		}
 
 		viewModel?.onFeedLoadError = { [weak self] error in

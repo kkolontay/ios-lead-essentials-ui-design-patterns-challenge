@@ -5,7 +5,7 @@
 import UIKit
 import FeedFeature
 
-final class FeedViewAdapter: FeedViewFlow {
+final class FeedViewAdapter: FeedView, FeedErrorView {
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
 
