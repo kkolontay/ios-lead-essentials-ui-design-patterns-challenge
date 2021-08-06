@@ -7,7 +7,6 @@ import FeedFeature
 final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 	private let feedLoader: FeedLoader
 	var presenter: FeedPresenter?
-	var errorPresenter: FeedErrorPresenter?
 
 	init(feedLoader: FeedLoader) {
 		self.feedLoader = feedLoader
@@ -22,7 +21,7 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 				self?.presenter?.didFinishLoadingFeed(with: feed)
 
 			case let .failure(error):
-				self?.errorPresenter?.didFinishLoadingFeed(with: error)
+				self?.presenter?.didFinishLoadingFeed(with: error)
 			}
 		}
 	}

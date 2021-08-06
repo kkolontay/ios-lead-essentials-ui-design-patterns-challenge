@@ -17,12 +17,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-
 		refresh()
 	}
 
 	@IBAction private func refresh() {
-		errorView.hideMessage()
 		viewModel?.loadFeed()
 	}
 
@@ -35,7 +33,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 		viewModel?.onFeedLoadError = { [weak self] error in
 			guard let self = self else { return }
-			self.errorView.show(message: error)
+			guard let errorMessage = error else {
+				self.errorView.hideMessage()
+				return
+			}
+			self.errorView.show(message: errorMessage)
 		}
 	}
 

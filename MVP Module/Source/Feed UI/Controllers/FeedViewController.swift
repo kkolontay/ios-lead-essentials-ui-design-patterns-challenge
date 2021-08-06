@@ -19,12 +19,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-
 		refresh()
 	}
 
 	@IBAction private func refresh() {
-		errorView.hideMessage()
 		delegate?.didRequestFeedRefresh()
 	}
 
@@ -34,6 +32,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	func display(_ cellControllers: [FeedImageCellController]) {
 		tableModel = cellControllers
+	}
+
+	func hideMessage() {
+		errorView.hideMessage()
 	}
 
 	func displayError(_ error: String) {

@@ -5,7 +5,7 @@
 import UIKit
 import FeedFeature
 
-final class FeedViewAdapter: FeedView, FeedErrorView {
+final class FeedViewAdapter: FeedViewFlow {
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
 
@@ -28,6 +28,10 @@ final class FeedViewAdapter: FeedView, FeedErrorView {
 	}
 
 	func display(_ viewModel: FeedErrorViewModel) {
-		controller?.displayError(viewModel.errorMessage)
+		guard let error = viewModel.errorMessage else {
+			controller?.hideMessage()
+			return
+		}
+		controller?.displayError(error)
 	}
 }
