@@ -26,8 +26,7 @@ class FeedUISnapshotTests: XCTestCase {
 //
 	func test_feedWithError() {
 		let sut = makeSUT()
-
-		sut.display(errorMessage: "An error message")
+		sut.display(FeedErrorViewModel(errorMessage: "An error message"))
 
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
@@ -50,8 +49,8 @@ class FeedUISnapshotTests: XCTestCase {
 	}
 }
 
-private extension FeedViewController {
-	func display(errorMessage: String) {
-		displayError(errorMessage)
-	}
-}
+//private extension FeedViewController {
+//	func display(errorMessage: String) {
+//		display(errorMessage)
+//	}
+//}
